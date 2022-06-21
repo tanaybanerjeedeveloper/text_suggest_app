@@ -11,6 +11,7 @@ class TextFieldCustom extends StatefulWidget {
 class _TextFieldCustomState extends State<TextFieldCustom> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _textController = TextEditingController();
+  var _myText;
 
   static const _textList = ['Health', 'Exercise'];
   @override
@@ -48,8 +49,11 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
               ),
             ),
             ElevatedButton(
-                onPressed: () => print(_textController.text),
-                child: const Text('Click'))
+                onPressed: () => setState(() {
+                      _myText = _textController.text;
+                    }),
+                child: const Text('Click')),
+            Text('text: $_myText'),
           ],
         ),
       ),
